@@ -3,7 +3,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 /**
- * 线程异步等待测试
+ * 线程异步处理返回值
  */
 public class ThreadTest {
     public static void main(String[] args) throws IOException, ExecutionException, InterruptedException {
@@ -38,7 +38,7 @@ public class ThreadTest {
         }
         public boolean callBack(){
             try {
-                Thread.sleep(Long.parseLong(time));
+                Thread.sleep(Long.parseLong(time)*1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

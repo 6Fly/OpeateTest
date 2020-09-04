@@ -1,31 +1,24 @@
-package com.cfam.controller;
+package com.cfam.service;
 
-
-
-import com.cfam.base.result.Result;
-import com.cfam.factory.FinanceFactory;
 import com.cfam.service.Shop;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import java.io.IOException;
 import java.util.concurrent.Future;
 
-
-@RestController
-public class ReadController {
-    @Autowired
-    private FinanceFactory financeFactory;
-
+@RunWith(SpringRunner.class)
+@SpringBootTest
+@EnableAsync
+public class AsyncSpring {
     @Autowired
     private Shop shop;
-
-    @RequestMapping(value = "/read",method = RequestMethod.GET)
-    public Result ReadOperation() {
-        return financeFactory.getStrategy("weChatOperate").deductOperate();
-    }
-
-    @RequestMapping(value = "/async",method = RequestMethod.GET)
-    public String async() {
+    @Test
+    public void shopTest() throws IOException {
 
         long la = System.currentTimeMillis();
         shop.getPrice();
@@ -39,8 +32,5 @@ public class ReadController {
         shop.getAnnotationPrice();
         System.out.println(System.currentTimeMillis()-lc);
 
-        return "1";
     }
-
-
 }

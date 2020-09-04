@@ -2,6 +2,9 @@ import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * 线程异步等待测试
+ */
 public class ThreadTest {
     public static void main(String[] args) throws IOException, ExecutionException, InterruptedException {
         TaskTool task1 = new TaskTool("线程1", "12", true);
@@ -10,12 +13,12 @@ public class ThreadTest {
         
         TaskTool task3 = new TaskTool("线程3", "6", true);
 
-        CompletableFuture f1 = CompletableFuture.supplyAsync(() -> task1.callBack())
-                .thenAccept((res)->dealRes(res));
-        CompletableFuture f2 = CompletableFuture.supplyAsync(() -> task2.callBack())
-                .thenAccept((res)->dealRes(res));
-        CompletableFuture f3 = CompletableFuture.supplyAsync(() -> task3.callBack())
-                .thenAccept((res)->dealRes(res));
+        CompletableFuture f1 = CompletableFuture.supplyAsync(task1::callBack)
+                .thenAccept(ThreadTest::dealRes);
+        CompletableFuture f2 = CompletableFuture.supplyAsync(task2::callBack)
+                .thenAccept(ThreadTest::dealRes);
+        CompletableFuture f3 = CompletableFuture.supplyAsync(task3::callBack)
+                .thenAccept(ThreadTest::dealRes);
         System.out.println(f1.get());
         System.in.read();
 
@@ -39,7 +42,7 @@ public class ThreadTest {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.printf(taskName+"taskRun.....");
+            System.out.println(taskName+"taskRun.....");
             return res;
         }
     }

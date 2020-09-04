@@ -3,6 +3,10 @@ import net.sf.cglib.beans.BeanMap;
 
 import java.util.HashMap;
 
+/**
+ * CgLib方法测试
+ * cglib 不支持remove  方法
+ */
 public class CglibTest {
     public static void main(String[] args) {
         User user = new User();

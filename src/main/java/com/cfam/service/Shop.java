@@ -17,7 +17,7 @@ import java.util.concurrent.Future;
 public class Shop {
 
 
-    private Random random = new Random();
+    private final Random random = new Random();
 
 
     public void  getPrice(){
@@ -29,7 +29,7 @@ public class Shop {
 
     public Future<Double> getAsyncPrice(){
         log.info("Future 异步");
-        CompletableFuture<Double> future = new CompletableFuture();
+        CompletableFuture<Double> future = new CompletableFuture<>();
         new Thread(()->{
             double price = calculator();
             log.info("Future 异步结束");

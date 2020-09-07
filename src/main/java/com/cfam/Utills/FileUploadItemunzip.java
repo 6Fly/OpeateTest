@@ -50,12 +50,13 @@ public class FileUploadItemunzip {
                 // 防止屏蔽程序抓取而返回403错误
                 conn.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
                 logger.info("连接状态"+conn.getResponseCode());
-                if (conn.getResponseCode() != 502 || count >2){
+                if (conn.getResponseCode() != 200 || count >=15){
                     flag = false;
                 }else {
-                    count ++;
+                    count +=5;
                     conn.disconnect();
-                    Thread.sleep(5*1000);
+//                    Thread.sleep(count*1000);
+
                 }
             }
 

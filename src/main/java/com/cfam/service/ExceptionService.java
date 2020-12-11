@@ -30,4 +30,10 @@ public class ExceptionService {
             e.printStackTrace();
         }
     }
+
+    public void dealException(){
+        Integer str = null;
+
+        str.toString();
+    }
 }

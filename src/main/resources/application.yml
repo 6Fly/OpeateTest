@@ -18,6 +18,15 @@ spring:
     testOnReturn: truegene
     minEvictableIdleTimeMillis: 5000
     timeBetweenEvictionRunsMillis: 8000
+  redis:
+    host: 192.168.10.109
+    port: 6379
+    password: carcredit123
+    pool:
+      max-idle: 100
+      min-idle: 1
+      max-active: 1000
+      max-wait: -1
 endpoints:
   jmx:
     enabled: false

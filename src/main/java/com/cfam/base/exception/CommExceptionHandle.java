@@ -26,9 +26,5 @@ public class CommExceptionHandle {
         logger.error(e.getMsg());
         return new BaseResponse(e.getCode(),e.getMsg());
     }
-    @ExceptionHandler({Exception.class})
-    public void exceptionHandler(Exception e){
-        e.printStackTrace();
-    }
 
 }

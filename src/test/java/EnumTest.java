@@ -10,7 +10,7 @@ public class EnumTest {
         System.out.println(code);
         List<String> businessApply = APFile.getFile("businessApply");
         System.out.println(businessApply);*/
-        /*String str = "https://carcredit-ample.oss-cn-beijing.aliyuncs.com/BQAP%28AH%29TJ202011190003.pdf?Expires=1605755911&OSSAccessKeyId=LTAI4FoV6VEzH2XPDcwTrceC&Signature=mZS2l8DvJd9iNl1zkZl%2FCQWXlbc%3D";
+        /*String str = "https://carcredit-ample.oss-cn-beijing.aliyuncs.com/BQAP%28AH%29TJ202011190003.pdf";
         String s = str.split("\\?Expires")[0];
         System.out.println(s);*/
         /*List list = new ArrayList<>();

@@ -1,5 +1,6 @@
 package com.cfam.config;
 
+import com.cfam.annotation.Synclock;
 import com.cfam.base.exception.BusinessException;
 import com.cfam.redis.RedisService;
 import org.aspectj.lang.JoinPoint;
@@ -22,8 +23,9 @@ public class SynclockConfig {
     @Pointcut("@annotation(com.cfam.annotation.Synclock)")
     public void syncLockOperate(){};
 
-    @Around("syncLockOperate()")
-    public Object doAround(ProceedingJoinPoint joinPoint) throws Throwable {
+    @Around("syncLockOperate() && @annotation(synclock)")
+    public Object doAround(ProceedingJoinPoint joinPoint, Synclock synclock) throws Throwable {
+        String annKey = synclock.key();
         Object[] args = joinPoint.getArgs();
         Map map = (Map) args[0];
         String key = map.get("ppp").toString();
@@ -31,16 +33,12 @@ public class SynclockConfig {
         if (ty){
             try {
                 return  joinPoint.proceed();
-            } catch (Throwable throwable) {
-                throwable.printStackTrace();
-                throw new BusinessException(204,"异常操作");
             } finally {
                 redisService.removeLock(key,key);
             }
-        }else {
-            System.out.println("bing===============");
-            throw new BusinessException(204,"重复提交");
         }
-    }
+        System.out.println("bing===============");
+        throw new BusinessException(204,"重复提交");
 
+    }
 }

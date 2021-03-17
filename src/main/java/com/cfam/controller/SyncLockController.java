@@ -14,7 +14,7 @@ import java.util.Map;
 public class SyncLockController {
 
 
-    @Synclock
+    @Synclock(key = "customerId")
     @RequestMapping(value = "/getNotice",method = RequestMethod.POST)
     public String getNotice(@RequestBody Map map){
 

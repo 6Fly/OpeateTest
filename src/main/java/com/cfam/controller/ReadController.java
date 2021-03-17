@@ -4,10 +4,12 @@ package com.cfam.controller;
 
 import com.cfam.base.result.Result;
 import com.cfam.factory.FinanceFactory;
+import com.cfam.service.CalculationService;
 import com.cfam.service.Shop;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.concurrent.Future;
 
 
@@ -18,6 +20,8 @@ public class ReadController {
 
     @Autowired
     private Shop shop;
+    @Autowired
+    private CalculationService calculationService;
 
     @RequestMapping(value = "/read",method = RequestMethod.GET)
     public Result ReadOperation() {
@@ -40,6 +44,11 @@ public class ReadController {
         System.out.println(System.currentTimeMillis()-lc);
 
         return "1";
+    }
+    @RequestMapping(value = "/cal",method = RequestMethod.GET)
+    public void cal(){
+        Map<String, Double> stringDoubleMap = calculationService.calAmount("23", "1", "10000");
+        System.out.println(stringDoubleMap);
     }
 
 

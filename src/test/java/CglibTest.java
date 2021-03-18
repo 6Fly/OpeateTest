@@ -1,7 +1,5 @@
-import com.cfam.bean.User;
+import com.project.pratice.bean.User;
 import net.sf.cglib.beans.BeanMap;
-
-import java.util.HashMap;
 
 /**
  * CgLib方法测试

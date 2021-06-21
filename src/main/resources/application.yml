@@ -3,12 +3,13 @@ eureka:
     hostname: /localhost
 server:
   port: 8283
-  context-path: /operate
+  servlet:
+    context-path: /operate
 spring:
   datasource:
-    url: jdbc:mysql://192.168.10.109:3306/announcement?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
-    username: root
-    password: CarCredit2016
+    url: jdbc:mysql://192.168.10.110:3306/announcement?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+    username: it
+    password: Carcredit123
     driver-class-name: com.mysql.jdbc.Driver
     initialSize: 60
     maxActive: 20
